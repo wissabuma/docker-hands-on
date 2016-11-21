@@ -1,0 +1,60 @@
+# Playing around with some Docker basic commands
+
+# list of available images 
+sudo docker $(sudo docker-machine config "$USER"1) images
+
+# list running containers
+sudo docker $(sudo docker-machine config "$USER"1) ps
+
+# list lastly run containers
+sudo docker $(sudo docker-machine config "$USER"1) ps -l
+
+# list all containers
+sudo docker $(sudo docker-machine config "$USER"1) ps -a
+
+# restart the hello world (second version)
+sudo docker $(sudo docker-machine config "$USER"1) start <container-name>
+
+# see container logs
+sudo docker $(sudo docker-machine config "$USER"1) logs <container-name>
+
+# watch logs and start the container again
+sudo docker $(sudo docker-machine config "$USER"1) logs -f  <container-name>
+sudo docker $(sudo docker-machine config "$USER"1) start <container-name>
+
+# inspect the hello world container
+sudo docker $(sudo docker-machine config "$USER"1) inspect <container-name>
+
+# remove a container 
+sudo docker $(sudo docker-machine config "$USER"1) rm <container-name>
+
+# run an interactive container
+sudo docker $(sudo docker-machine config "$USER"1) run -t -i ubuntu /bin/bash
+
+# run a deamonized container
+sudo docker $(sudo docker-machine config "$USER"1) run -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done"
+
+# pick with container name with ps
+sudo docker $(sudo docker-machine config "$USER"1) ps
+sudo docker $(sudo docker-machine config "$USER"1) logs -f <name>
+
+# show running process inside a container
+sudo docker $(sudo docker-machine config "$USER"1) top <name>
+
+# stop the container
+sudo docker $(sudo docker-machine config "$USER"1) stop <name>
+
+# hello-world third version
+sudo docker $(sudo docker-machine config "$USER"1) run -d -P training/webapp python app.py
+
+# show exposed ports
+sudo docker $(sudo docker-machine config "$USER"1) ps -l
+sudo docker $(sudo docker-machine config "$USER"1) port <name>
+
+# connect to the web page via command line or browser
+curl -L $(sudo docker-machine ip "$USER"1):port
+
+# execute a command inside a container
+sudo docker $(sudo docker-machine config "$USER"1) exec -it <name> /bin/bash
+
+
