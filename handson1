@@ -47,4 +47,4 @@ sudo docker-machine config simone1
 sudo docker $(sudo docker-machine config simone1) ps
 
 # 14. observe the create options (lot of supported drivers: cloud like AWS, Digital Ocean and on-premise like vSphere)
-sudo docker-machine create 
+sudo docker-machine create --help 
