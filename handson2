@@ -1,0 +1,5 @@
+# Docker hello-world - first version
+sudo docker $(sudo docker-machine config "$USER"1) run hello-world
+
+# Docker hello-world - second version
+sudo docker $(sudo docker-machine config "$USER"1) run ubuntu /bin/echo 'Hello world'
