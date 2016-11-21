@@ -1,2 +1,50 @@
-#creating docker machines
-#run the following
+# Run the following to create 3 docker machines per user and play around with docker-machine command
+
+# 0. list already existing machines:
+sudo docker-machine ls
+
+# 1. creating docker machines
+for i in {1..3}; do sudo docker-machine create --driver virtualbox  "$USER"$i; done
+
+# 2. list available machines
+sudo docker-machine ls
+
+# 3. query the status of a machine
+sudo docker-machine status <machine-name>
+
+# 4. stop/start/restart/kill a machine
+sudo docker-machine stop/start/restart/kill <machine-name>
+
+# 5. inspect some machine
+sudo docker-machine inspect <machine-name>
+
+# 6. query machine's IP
+sudo docker-machine ip <machine-name>
+
+# 7. regenerate TLS certificates (do not miss with that unless necessary)
+sudo docker-machine regenerate-certs <machine-name> 
+
+# 8. ssh into some machine
+sudo docker-machine ssh <machine-name>
+
+# 9. scp file between host and docker-machine
+sudo docker-machine scp path <machine-name>:/path
+
+# 10. upgrade to latest version of Docker Engine
+sudo docker-machine upgrade <machine-name>
+
+# 11. get machine's context variables
+sudo docker-machine env <machine>
+
+# 12. switch to machine's context and play with docker commands  / DOSE NOT HOLD if not root
+      # if root does it gloably, must then unset DOCKER_TLS_VERIFY and DOCKER_HOST to get back to bare-metal
+eval $(sudo docker-machine env <machine>)
+
+# 13. safer (volatile) way to switch to machine's context is to embed the following command within docker command
+sudo docker-machine config simone1 
+
+# for example:
+sudo docker $(sudo docker-machine config simone1) ps
+
+# 14. observe the create options (lot of supported drivers: cloud like AWS, Digital Ocean and on-premise like vSphere)
+sudo docker-machine create 
