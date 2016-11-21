@@ -96,4 +96,4 @@ sudo docker $(sudo docker-machine config "$USER"1) node ls
 # stop a service
 # remove a service
 # leave a swarm
-....etc
+#....etc
