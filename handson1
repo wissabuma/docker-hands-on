@@ -21,7 +21,7 @@ sudo docker-machine inspect <machine-name>
 # 6. query machine's IP
 sudo docker-machine ip <machine-name>
 
-# 7. regenerate TLS certificates (do not miss with that unless necessary)
+# 7. regenerate TLS certificates (do not mess with that unless necessary)
 sudo docker-machine regenerate-certs <machine-name> 
 
 # 8. ssh into some machine
