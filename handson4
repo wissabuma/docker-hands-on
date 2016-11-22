@@ -4,7 +4,7 @@ for i in {1..3}; do sudo docker-machine status "$USER"$i; done
 # if necessary start them
 for i in {1..3}; do sudo docker-machine start "$USER"$i; done
 
-# show Engine info
+# show Engine info - search swarm info
 sudo docker $(sudo docker-machine config "$USER"1) info
 sudo docker $(sudo docker-machine config "$USER"2) info
 sudo docker $(sudo docker-machine config "$USER"3) info
@@ -97,3 +97,5 @@ sudo docker $(sudo docker-machine config "$USER"1) node ls
 # remove a service
 # leave a swarm
 #....etc
+#
+# Unlike docker run, with docker service, services get automatically started when machine reboots
